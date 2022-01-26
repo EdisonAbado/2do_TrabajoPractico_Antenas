@@ -1,5 +1,5 @@
 \documentclass[11pt]{book}
-\usepackage[spanish]{babel}
+\usepackage[spanish,es-tabla]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{listings}
@@ -78,6 +78,7 @@
 \author{
 	\begin{tabular}{lr}
 		Edison \textsc{Abado Ancco} & 145012 \\
+		Roly Sandro \textsc{Gutierrez Benito} & 182967\\
 	\end{tabular}
 }
 
@@ -118,47 +119,47 @@
 
 \newpage
 
-\section{Distribución de coeficientes homogeneo para un espaciado de $\lambda/2$}
+\section{Distribución de coeficientes homogeneo para un espaciado de \boldmath$\lambda/2$}
 
-Definimos la simulación de las imágenes desde \eqref{a11} hasta \eqref{a15} con los siguientes parámetros:
+\noindent Definimos la simulación de las imágenes desde \eqref{a11} hasta \eqref{a15} con los siguientes parámetros:
 
 \begin{align*}
-	L = &\lambda/2 =  0.5m \\
-	a = & 0.1mm \\
-	espaciado = & \lambda / 2 = 0.5m \\
-	f = & 300MHz
+	L =			& \ \lambda/2 = 0.5m \\
+	a =			& \ 0.1mm \\
+	espaciado = & \ \lambda / 2 = 0.5m \\
+	f =			& \ 300MHz
 \end{align*}
 
-Usamos los coeficientes homogeneos de:
+\noindent Usamos los coeficientes homogeneos de:
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c}
+		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
+		1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+	\end{tabular}
+	\caption{Coeficientes homogéneos}
+	\label{tab:1}
+\end{table}
 
-\begin{tabular}{c|c|c|c|c|c|c}
-	$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-	1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-\end{tabular}
-
-Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-10.908dB$ y un SWR de $1.796$. 
-
-
+\noindent Para \boldmath{$f=300MHz$} se obtiene un coeficiente de reflexión de \boldmath{$-10.908dB$} y un SWR de \boldmath{$1.796$}. 
 
 \begin{figure}[h]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a11}\label{a11}}
+		\includegraphics[scale=0.30]{IMAGENES/a11}\label{a11}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a12}\label{a12}}	
+		\includegraphics[scale=0.30]{IMAGENES/a12}\label{a12}}	
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a13}\label{a13}} \\
+		\includegraphics[scale=0.30]{IMAGENES/a13}\label{a13}} \\
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a14}\label{a14}}
+		\includegraphics[scale=0.30]{IMAGENES/a14}\label{a14}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a15}\label{a15}}
+		\includegraphics[scale=0.30]{IMAGENES/a15}\label{a15}}
 	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 2$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
 \end{figure}
 
-
 \newpage
-
-\section{Distribución de coeficientes triangular para un espaciado de $\lambda/2$}
+\section{Distribución de coeficientes triangular para un espaciado de \boldmath{$\lambda/2$}}
 
 Definimos la simulación de las imágenes desde \eqref{a21} hasta \eqref{a25} con los siguientes parámetros:
 
@@ -170,34 +171,35 @@ Definimos la simulación de las imágenes desde \eqref{a21} hasta \eqref{a25} co
 \end{align*}
 
 Usamos los coeficientes homogeneos de:
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c}
+		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
+		1 & 2 & 3 & 4 & 3 & 2 & 1 \\
+	\end{tabular}
+	\caption{Coeficientes homogéneos}
+	\label{tab:2}
+\end{table}
 
-\begin{tabular}{c|c|c|c|c|c|c}
-	$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-	1 & 2 & 3 & 4 & 3 & 2 & 1 \\
-\end{tabular}
-
-Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-20.05dB$ y un SWR de $1.220$. 
-
-
+\noindent Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-20.05dB$ y un SWR de $1.220$. 
 
 \begin{figure}[h]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a21}\label{a21}}
+		\includegraphics[scale=0.30]{IMAGENES/a21}\label{a21}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a22}\label{a22}}	
+		\includegraphics[scale=0.30]{IMAGENES/a22}\label{a22}}	
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a23}\label{a23}} \\
+		\includegraphics[scale=0.30]{IMAGENES/a23}\label{a23}} \\
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a24}\label{a24}}
+		\includegraphics[scale=0.30]{IMAGENES/a24}\label{a24}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a25}\label{a25}}
+		\includegraphics[scale=0.30]{IMAGENES/a25}\label{a25}}
 	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 2$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
 \end{figure}
 
 
 \newpage
-
 \section{Distribución de coeficientes binómico para un espaciado de $\lambda/2$}
 
 Definimos la simulación de las imágenes desde \eqref{a31} hasta \eqref{a35} con los siguientes parámetros:
@@ -210,28 +212,30 @@ Definimos la simulación de las imágenes desde \eqref{a31} hasta \eqref{a35} co
 \end{align*}
 
 Usamos los coeficientes homogeneos de:
-
-\begin{tabular}{c|c|c|c|c|c|c}
-	$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-	1 & 6 & 15 & 20 & 15 & 6 & 1 \\
-\end{tabular}
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c}
+		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
+		1 & 6 & 15 & 20 & 15 & 6 & 1 \\
+	\end{tabular}
+	\caption{Coeficientes homogéneos}
+	\label{tab:3}
+\end{table}
 
 Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-3.184dB$ y un SWR de $5.17$. 
-
-
 
 \begin{figure}[h]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a31}\label{a31}}
+		\includegraphics[scale=0.30]{IMAGENES/a31}\label{a31}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a32}\label{a32}}	
+		\includegraphics[scale=0.30]{IMAGENES/a32}\label{a32}}	
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a33}\label{a33}} \\
+		\includegraphics[scale=0.30]{IMAGENES/a33}\label{a33}} \\
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a34}\label{a34}}
+		\includegraphics[scale=0.30]{IMAGENES/a34}\label{a34}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a35}\label{a35}}
+		\includegraphics[scale=0.30]{IMAGENES/a35}\label{a35}}
 	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 2$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
 \end{figure}
 \newpage
@@ -273,28 +277,30 @@ Definimos la simulación de las imágenes desde \eqref{a41} hasta \eqref{a45} co
 \end{align*}
 
 Usamos los coeficientes homogeneos de:
-
-\begin{tabular}{c|c|c|c|c|c|c}
-	$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-	1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-\end{tabular}
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c}
+		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
+		1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+	\end{tabular}
+	\caption{Coeficientes homogénes}
+	\label{tab:4}
+\end{table}
 
 Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-9.60dB$ y un SWR de $1.98$. 
-
-
 
 \begin{figure}[h]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a41}\label{a41}}
+		\includegraphics[scale=0.30]{IMAGENES/a41}\label{a41}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a42}\label{a42}}	
+		\includegraphics[scale=0.30]{IMAGENES/a42}\label{a42}}	
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a43}\label{a43}} \\
+		\includegraphics[scale=0.30]{IMAGENES/a43}\label{a43}} \\
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a44}\label{a44}}
+		\includegraphics[scale=0.30]{IMAGENES/a44}\label{a44}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a45}\label{a45}}
+		\includegraphics[scale=0.30]{IMAGENES/a45}\label{a45}}
 	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 4$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
 \end{figure}
 \newpage
@@ -311,28 +317,30 @@ Definimos la simulación de las imágenes desde \eqref{a51} hasta \eqref{a55} co
 \end{align*}
 
 Usamos los coeficientes homogeneos de:
-
-\begin{tabular}{c|c|c|c|c|c|c}
-	$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-	1 & 2 & 3 & 4 & 3 & 2 & 1 \\
-\end{tabular}
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c}
+		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
+		1 & 2 & 3 & 4 & 3 & 2 & 1 \\
+	\end{tabular}
+	\caption{Coeficientes homongéneos}
+	\label{tab:5}
+\end{table}
 
 Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-10.908dB$ y un SWR de $1.796$. 
-
-
 
 \begin{figure}[h]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a51}\label{a51}}
+		\includegraphics[scale=0.30]{IMAGENES/a51}\label{a51}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a52}\label{a52}}	
+		\includegraphics[scale=0.30]{IMAGENES/a52}\label{a52}}	
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a53}\label{a53}} \\
+		\includegraphics[scale=0.30]{IMAGENES/a53}\label{a53}} \\
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a54}\label{a54}}
+		\includegraphics[scale=0.30]{IMAGENES/a54}\label{a54}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a55}\label{a55}}
+		\includegraphics[scale=0.30]{IMAGENES/a55}\label{a55}}
 	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 4$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
 \end{figure}
 
@@ -350,33 +358,34 @@ Definimos la simulación de las imágenes desde \eqref{a61} hasta \eqref{a65} co
 \end{align*}
 
 Usamos los coeficientes homogeneos de:
-
-\begin{tabular}{c|c|c|c|c|c|c}
-	$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-	1 & 6 & 15 & 20 & 15 & 6 & 1 \\
-\end{tabular}
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c}
+		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
+		1 & 6 & 15 & 20 & 15 & 6 & 1 \\
+	\end{tabular}
+	\caption{Coeficientes homogéneos}
+	\label{tab:6}
+\end{table}
 
 Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-3.89dB$ y un SWR de $4.53$. 
-
-
 
 \begin{figure}[h]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a61}\label{a61}}
+		\includegraphics[scale=0.30]{IMAGENES/a61}\label{a61}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a62}\label{a62}}	
+		\includegraphics[scale=0.30]{IMAGENES/a62}\label{a62}}	
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a63}\label{a63}} \\
+		\includegraphics[scale=0.30]{IMAGENES/a63}\label{a63}} \\
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a64}\label{a64}}
+		\includegraphics[scale=0.30]{IMAGENES/a64}\label{a64}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a65}\label{a65}}
+		\includegraphics[scale=0.30]{IMAGENES/a65}\label{a65}}
 	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 4$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
 \end{figure}
 
 \newpage
-
 
 \section{Comparación de distribución de coeficientes para un espaciado de $\lambda/4$}
 
