@@ -1,4 +1,4 @@
-\documentclass[11pt]{book}
+\documentclass[11pt]{report}
 \usepackage[spanish]{babel}
 \decimalpoint
 \usepackage[utf8]{inputenc}
@@ -46,7 +46,7 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{eso-pic}
 \usepackage{avant}
-\usepackage[top=1.8cm,bottom=1.8cm,left=2.3cm,right=2.3cm,headsep=8pt,a4paper]{geometry}
+\usepackage[top=1.8cm,bottom=1.8cm,left=2cm,right=2cm,headsep=8pt,a4paper]{geometry}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
@@ -95,7 +95,7 @@
 	\textsc{\large Escuela Profesional de Ingeniería Electrónica}\\[0.5cm]
 	\textsc{\Large \textbf{Antenas}}\\[0.5cm] 
 	\HRule \\[0.4cm]
-	{ \huge \bfseries Cuarto Trabajo práctico}\\[0.4cm] 
+	{ \huge \bfseries Distribuciones de Corriente}\\[0.4cm] 
 	\HRule \\[1.5cm]
 	\begin{minipage}{\textwidth}
 		\center 
@@ -103,10 +103,15 @@
 		\emph{Profesor:} \\
 		Ing. Milton \textsc{Velasquez Curo} \\[1cm]
 		
-		\begin{tabular}{ll}
-			\emph{Alumno:} & \emph{Código:}\\
-			Edison \textsc{Abado Ancco} & 145012 \\
-			Roly Sandro \textsc{Gutierrez Benito} & 182967\\
+		\begin{tabular}{c}
+			\emph{Alumnos:}  \\
+			Edison   \textsc{Abado Ancco} \\
+			Roly Sandro    \textsc{Gutierrez Benito} \\
+			Jhon Saul   \textsc{Huallpa Aimituma} \\
+			Anel Milenka   \textsc{Delgado Cama} \\
+			Ronny  \textsc{Vilavila Contreras} \\
+			Maria Fernanda    \textsc{Pilares Aguirre} \\
+			Luis Angel  \textsc{Mendoza Saya} \\
 		\end{tabular}
 	\end{minipage}\\[2cm]
 	\today
@@ -117,311 +122,257 @@
 
 %\tableofcontents indice bloqueado xD
 
-\chapter{Antena con 7 elementos de fuentes independientes dependientes de coeficientes homogeneos, distribución triangular y binómico con un espaciado de $\lambda/2$}
+\chapter{Distribuciones de corrientes para una agrupación lineal de N elementos}
 
-\newpage
+Para todas las distribuciones usamos los de cada parámetro de acuerdo a la imagen \eqref{img1}.
 
-\section{Distribución de coeficientes homogeneo para un espaciado de \boldmath$\lambda/2$}
 
-\noindent Definimos la simulación de las imágenes desde \eqref{a11} hasta \eqref{a15} con los siguientes parámetros:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=1]{IMAGENES/img1}
+	\caption{Definición de variables.}
+	\label{img1} % Debe estar al final del contenido de la figura
+\end{figure}
+
+El parámetro $N$ es el único que se variará, donde $n$ es el elemento central; los siguientes parámetros son fijos.
 
 \begin{align*}
-	L =			& \ \lambda/2 = 0.5m \\
-	a =			& \ 0.1mm \\
-	espaciado = & \ \lambda / 2 = 0.5m \\
-	f =			& \ 300MHz
+	f =			& \ 300MHz \\
+	\lambda = 	& \ 1.00m \\
+	H =			& \ \lambda/2 = 0.5m \\
+	a =			& \ 0.2mm \\
+	d_1 = & \ \lambda / 2 = 0.5m \\
+	d_2 = & \ \lambda / 4 = 0.25m \\
 \end{align*}
 
-\noindent Usamos los coeficientes homogeneos de:
-\begin{table}[!ht]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c}
-		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-		1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-	\end{tabular}
-	\caption{Coeficientes homogéneos}
-	\label{tab:1}
-\end{table}
+Podemos determinar un aproximado de la directividad con:
 
-\noindent Para \boldmath{$f=300MHz$} se obtiene un coeficiente de reflexión de \boldmath{$-10.908dB$} y un SWR de \boldmath{$1.796$}. 
+\begin{equation}
+	D = \frac{4\pi}{\int\int_{4/\pi} t(\theta,\phi)d\Omega}=\frac{4\pi}{\Omega_e}
+\end{equation}
 
-\begin{figure}[h]
-	\centering
-	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a11}\label{a11}}
-	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a12}\label{a12}}	
-	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a13}\label{a13}} \\
-	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a14}\label{a14}}
-	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a15}\label{a15}}
-	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 2$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
-\end{figure}
+Donde $\Omega_e$ es el ángulo sólido, definido como el ángulo dado a $-3dB$ en el patrón de radiación, y se usará para hacer comparaciones. De la teoría podemos considerar que las antenas directivas, con un sólo lóbulo principal y lóbulos secundarios de valores reducidos, podemos tener una estimación de la directividad considerando que se produce radiación uniforme en el ángulo sólido definido por los anchos de haz a $-3dB$ en los dos planos principales del patron de radiación ($\Omega_e = \Delta\theta_1 \cdot \Delta\theta_2$)
+
+\section{Comparación para 3, 5, 7 y 9 elementos}
+
+A continuación se hacen las comparaciones de patrones de radiación de corte horizontal y vertical. Las ganancias máximas entre el corte horizontal y vertical son prácticamente la misma para una determinada configuración de elementos.
 
 \newpage
-\section{Distribución de coeficientes triangular para un espaciado de \boldmath{$\lambda/2$}}
 
-Definimos la simulación de las imágenes desde \eqref{a21} hasta \eqref{a25} con los siguientes parámetros:
+\subsection{Comparación de distribuciones para 3 elementos}
 
-\begin{align*}
-	L = &\lambda/2 =  0.5m \\
-	a = & 0.1mm \\
-	espaciado = & \lambda / 2 = 0.5m \\
-	f = & 300MHz
-\end{align*}
+Las distribuciones de corrientes para 3 elementos están dados por:
 
-Usamos los coeficientes homogeneos de:
-\begin{table}[!ht]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c}
-		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-		1 & 2 & 3 & 4 & 3 & 2 & 1 \\
-	\end{tabular}
-	\caption{Coeficientes homogéneos}
-	\label{tab:2}
-\end{table}
+\begin{tabular}{l|c|c|c}
+	& $a_0$ & $a_1$ & $a_2$ \\ \hline
+	Distribución Uniforme 	& 1 & 1 & 1  \\
+	Distribución Triangular & 1 & 2 & 1  \\
+	Distribución Binómica 	& 1 & 2 & 1  \\
+\end{tabular}\\
+ 
+Lo más resaltante es que las distribuciones Triangular y Binómica generan patrones de radiación superpuestas, ya que estos tienen los mismos valores de corriente para 3 elementos. 
+La distribución de corriente que genera menor directividad es la Triangular, y las mayores son la uniforme junto a la binómica por estar superpuestas. 
 
-\noindent Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-20.05dB$ y un SWR de $1.220$. 
 
-\begin{figure}[h]
+% COMPARACIÓN PARA 3 ELEMENTOS
+\begin{figure}[h!]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a21}\label{a21}}
+		\includegraphics[scale=0.6]{IMAGENES/a131}\label{a131}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a22}\label{a22}}	
+		\includegraphics[scale=0.6]{IMAGENES/a132}\label{a132}}	\\
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a23}\label{a23}} \\
+		\includegraphics[scale=0.6]{IMAGENES/a133}\label{a133}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a24}\label{a24}}
-	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a25}\label{a25}}
-	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 2$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
+		\includegraphics[scale=0.6]{IMAGENES/a134}\label{a134}}
+	\caption{Patrones de radiación para 3 segmentos.
+	(a) Vertical para $d =\lambda/2$.
+	(b) Horizontal para $d=\lambda/2$.
+	(c) Vertical para $d=\lambda/4$.
+	(d) Horizontal para $d=\lambda/4$.}
 \end{figure}
 
 
-\newpage
-\section{Distribución de coeficientes binómico para un espaciado de $\lambda/2$}
+\subsection{Comparación de distribuciones para 5 elementos}
 
-Definimos la simulación de las imágenes desde \eqref{a31} hasta \eqref{a35} con los siguientes parámetros:
+Las distribuciones de corrientes para 5 elementos están dados por: 
 
-\begin{align*}
-	L = &\lambda/2 =  0.5m \\
-	a = & 0.1mm \\
-	espaciado = & \lambda / 2 = 0.5m \\
-	f = & 300MHz
-\end{align*}
+\begin{tabular}{l|c|c|c|c|c}
+	& $a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$\\ \hline
+	Distribución Uniforme 	& 1 & 1 & 1 & 1 & 1 \\
+	Distribución Triangular & 1 & 2 & 3 & 2 & 1 \\
+	Distribución Binómica 	& 1 & 4 & 6 & 4 & 1 \\
+\end{tabular} \\
 
-Usamos los coeficientes homogeneos de:
-\begin{table}[!ht]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c}
-		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-		1 & 6 & 15 & 20 & 15 & 6 & 1 \\
-	\end{tabular}
-	\caption{Coeficientes homogéneos}
-	\label{tab:3}
-\end{table}
+La distribución triangular de obtiene de manera escalonada sumando $+1$ hasta el centro, y luego sumando $-1$ hasta el extremo opuesto. La distribución binómica se usa el triángulo de pascal para un $n = N - 1$ correspondiente. 
+La distribución de corriente que genera menor directividad es la binómica, pero esta no presenta lóbulos secundarios, ya sea para $d_1$ o $d_2$; y la que mayor directividad presenta es la distribución uniforme, pero esta presenta dos o mas lobulos secundarios tanto para $d_1$ o $d_2$.
 
-Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-3.184dB$ y un SWR de $5.17$. 
 
-\begin{figure}[h]
+% COMPARACIÓN PARA 5 ELEMENTOS
+\begin{figure}[h!]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a31}\label{a31}}
+		\includegraphics[scale=0.6]{IMAGENES/a151}\label{a151}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a32}\label{a32}}	
+		\includegraphics[scale=0.6]{IMAGENES/a152}\label{a152}}	\\
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a33}\label{a33}} \\
+		\includegraphics[scale=0.6]{IMAGENES/a153}\label{a153}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a34}\label{a34}}
-	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a35}\label{a35}}
-	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 2$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
-\end{figure}
-\newpage
-
-
-\section{Comparación de distribución de coeficientes para un espaciado de $\lambda/2$}
-
-\begin{figure}[h]
-	\centering
-	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a111}\label{a111}}
-	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a222}\label{a222}}	
-	\caption{(a) Patrón de radiación horizontal para 300MHz, espaciado de
-	 $\lambda / 2$. (b) Patrón de radiación vertical  para 300MHz, espaciado de $\lambda / 2$.  }
+		\includegraphics[scale=0.6]{IMAGENES/a154}\label{a154}}
+	\caption{Patrones de radiación para 5 segmentos.
+		(a) Vertical para $d_1 =\lambda/2$.
+		(b) Horizontal para $d_1=\lambda/2$.
+		(c) Vertical para $d_2=\lambda/4$.
+		(d) Horizontal para $d_2=\lambda/4$.}
 \end{figure}
 
-De las comparaciones mmostradas en las figuras podemos ver que el más ineficiente en directividad es el que tiene la distribución binomica, por lo menos para $f=300MHz$ y un $L=0.5$, la distribución binómica genera más pérdidas por que sus lóbulos secundarios crecen a pesar de que en número disminuyen.
+\subsection{Comparación de distribuciones para 7 elementos}
 
+Las distribuciones de corrientes para 7 elementos están dados por: 
 
-Para hacen un enlace, se tiene que considerar en coeficeinte de acoplamiento y el SWR, el cual, con menos arreglos podemos llegar a un correcto funcionamiento con los coeficientes hallados por distribución triangular. A pesar de que tenemos menos directividad que con los coeficientes homogeneos, tenemos menos lóbulos, lo que representa menos pérdida en potencia. Además de que tenemos una impedancia de $Z = 57.3 + j7.81$, y un SWR adecuado de 1.22. Haciendo unos areglos de longitud de $L$ , radio $a$ y ligeros cambios de separación entre elementos, podemos llegar a un optimo dise;o para su correcto funcionamiento. Llegamos a $11.1dBi$, el cual podemos optimizar y mejorar.
+\begin{tabular}{l|c|c|c|c|c|c|c}
+	& $a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
+	Distribución Uniforme 	& 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+	Distribución Triangular & 1 & 2 & 3 & 4 & 3 & 2 & 1 \\
+	Distribución Binómica 	& 1 & 6 & 15 & 20 & 15 & 6 & 1 \\
+\end{tabular} \\
 
-\newpage
+La distribución triangular de obtiene de manera escalonada sumando $+1$ hasta el centro, y luego sumando $-1$ hasta el extremo opuesto. La distribución binómica se usa el triángulo de pascal para un $n = N - 1$ correspondiente. 
+La distribución de corriente que genera menor directividad es la binómica, esta presenta lóbulos secundarios muy pequeños para $d_1$ y ninguna para $d_2$; la que mayor directividad presenta es la distribución triangular, pero es muy cercana a la distribución uniforme con la diferencia de que esta última presenta lóbulos secundarios laterales muy pronunciados para $d_1$; y la mayor directividad para $d_2$ la sigue teniendo la distribución uniforme.
 
-
-\chapter{Antena con 7 elementos de fuentes independientes dependientes de coeficientes homogeneos, distribución triangular y binómico con un espaciado de $\lambda/4$}
-
-\newpage
-
-\section{Distribución de coeficientes triangular para un espaciado de $\lambda/4$}
-
-Definimos la simulación de las imágenes desde \eqref{a41} hasta \eqref{a45} con los siguientes parámetros:
-
-\begin{align*}
-	L = &\lambda/2 =  0.5m \\
-	a = & 0.1mm \\
-	espaciado = & \lambda / 4 = 0.25m \\
-	f = & 300MHz
-\end{align*}
-
-Usamos los coeficientes homogeneos de:
-\begin{table}[!ht]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c}
-		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-		1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-	\end{tabular}
-	\caption{Coeficientes homogénes}
-	\label{tab:4}
-\end{table}
-
-Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-9.60dB$ y un SWR de $1.98$. 
-
-\begin{figure}[h]
+% COMPARACIÓN PARA 7 ELEMENTOS
+\begin{figure}[h!]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a41}\label{a41}}
+		\includegraphics[scale=0.6]{IMAGENES/a171}\label{a171}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a42}\label{a42}}	
+		\includegraphics[scale=0.6]{IMAGENES/a172}\label{a172}}	\\
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a43}\label{a43}} \\
+		\includegraphics[scale=0.6]{IMAGENES/a173}\label{a173}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a44}\label{a44}}
-	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a45}\label{a45}}
-	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 4$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
+		\includegraphics[scale=0.6]{IMAGENES/a174}\label{a174}}
+	\caption{Patrones de radiación para 7 segmentos.
+		(a) Vertical para $d_1 =\lambda/2$.
+		(b) Horizontal para $d_1=\lambda/2$.
+		(c) Vertical para $d_2=\lambda/4$.
+		(d) Horizontal para $d_2=\lambda/4$.}
 \end{figure}
-\newpage
 
-\section{Distribución de coeficientes triangular para un espaciado de $\lambda/4$}
 
-Definimos la simulación de las imágenes desde \eqref{a51} hasta \eqref{a55} con los siguientes parámetros:
+\subsection{Comparación de distribuciones para 9 elementos}
 
-\begin{align*}
-	L = &\lambda/2 =  0.5m \\
-	a = & 0.1mm \\
-	espaciado = & \lambda / 4 = 0.25m \\
-	f = & 300MHz
-\end{align*}
+Las distribuciones de corrientes para 9 elementos están dados por: 
 
-Usamos los coeficientes homogeneos de:
-\begin{table}[!ht]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c}
-		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-		1 & 2 & 3 & 4 & 3 & 2 & 1 \\
-	\end{tabular}
-	\caption{Coeficientes homongéneos}
-	\label{tab:5}
-\end{table}
+\begin{tabular}{l|c|c|c|c|c|c|c|c|c}
+	& $a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ & $a_7$ & $a_8$\\ \hline
+	Distribución Uniforme 	& 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+	Distribución Triangular & 1 & 2 & 3 & 4 & 5 & 4 & 3 & 2 & 1\\
+	Distribución Binómica 	& 1 & 8 & 28 & 56 & 70 & 56 & 28 & 8 & 1\\
+\end{tabular} \\
 
-Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-10.908dB$ y un SWR de $1.796$. 
+La distribución triangular de obtiene de manera escalonada sumando $+1$ hasta el centro, y luego sumando $-1$ hasta el extremo opuesto. La distribución binómica se usa el triángulo de pascal para un $n = N - 1$ correspondiente. 
+La distribución de corriente que genera menor directividad es la triangular para $d_1$, y la binómica para $d_2$; y la mayor directividad la presenta la distribución uniforme para $d_1$ y la distribución triangular para $d_2$.
 
-\begin{figure}[h]
+% COMPARACIÓN PARA 9 ELEMENTOS
+\begin{figure}[h!]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a51}\label{a51}}
+		\includegraphics[scale=0.6]{IMAGENES/a191}\label{a191}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a52}\label{a52}}	
+		\includegraphics[scale=0.6]{IMAGENES/a192}\label{a192}}	\\
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a53}\label{a53}} \\
+		\includegraphics[scale=0.6]{IMAGENES/a193}\label{a193}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a54}\label{a54}}
-	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a55}\label{a55}}
-	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 4$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
+		\includegraphics[scale=0.6]{IMAGENES/a194}\label{a194}}
+	\caption{Patrones de radiación para 9 segmentos.
+		(a) Vertical para $d_1 =\lambda/2$.
+		(b) Horizontal para $d_1=\lambda/2$.
+		(c) Vertical para $d_2=\lambda/4$.
+		(d) Horizontal para $d_2=\lambda/4$.}
 \end{figure}
 
 \newpage
 
-\section{Distribución de coeficientes triangular para un espaciado de $\lambda/4$}
+\section{Comparaciones para $d_1 = \lambda/2$ y $d_2 = \lambda/4$}
 
-Definimos la simulación de las imágenes desde \eqref{a61} hasta \eqref{a65} con los siguientes parámetros:
+\subsection{Comparaciones para $\lambda$/2}
 
-\begin{align*}
-	L = &\lambda/2 =  0.5m \\
-	a = & 0.1mm \\
-	espaciado = & \lambda / 4 = 0.25m \\
-	f = & 300MHz
-\end{align*}
+En estas comparaciones podemos ver que la distribución de corriente binómica es la que menos lóbulos secundarios y/o laterales presenta, por el otro lado se encuentra la distribución de corriente uniforme, que a medida que se le aumenta más elementos, su directividad aumenta, pero sus lóbulos secundarios aumentan en número, pero también se debe considerar que al aumentar número de lóbulos secundarios o menores, estos son pequeños. 
 
-Usamos los coeficientes homogeneos de:
-\begin{table}[!ht]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c|c}
-		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ \\ \hline
-		1 & 6 & 15 & 20 & 15 & 6 & 1 \\
-	\end{tabular}
-	\caption{Coeficientes homogéneos}
-	\label{tab:6}
-\end{table}
-
-Para $f=300MHz$ se obtiene un coeficiente de reflexión de $-3.89dB$ y un SWR de $4.53$. 
-
-\begin{figure}[h]
+% COMPARACIÓN PARA d=LAMBDA/2
+\begin{figure}[h!]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a61}\label{a61}}
+		\includegraphics[scale=0.47]{IMAGENES/b11}\label{b11}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a62}\label{a62}}	
+		\includegraphics[scale=0.47]{IMAGENES/b12}\label{b12}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a63}\label{a63}} \\
+		\includegraphics[scale=0.47]{IMAGENES/b13}\label{b13}}\\
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a64}\label{a64}}
+		\includegraphics[scale=0.47]{IMAGENES/b14}\label{b14}}
 	\subfloat[]{
-		\includegraphics[scale=0.30]{IMAGENES/a65}\label{a65}}
-	\caption{(a) Ventana principal para 300MHz, espaciado de $\lambda / 4$ y coeficientes homogeneos. (b) Ventana de edición para ingresar las fuentes homogeneas de acuerdo a los coeficientes. (c) Plano vertical con patrón de radiación. (d) Vista en 3D del patrón de radiación. (e)SWR y coeficiente de refleción.}
+		\includegraphics[scale=0.47]{IMAGENES/b15}\label{b15}}
+	\subfloat[]{
+		\includegraphics[scale=0.45]{IMAGENES/b16}\label{b16}}
+	
+	\caption{Patrones de radiación para $d_1=\lambda/2$.
+		(a) Distribución Binómica Vertical.
+		(b) Distribución Binómica Horizontal.
+		(c) Distribución Triangular Vertical.
+		(d) Distribución Triangular Horizontal.
+		(e) Distribución Uniforme Vertical.
+		(f) Distribución Uniforme Horizontal.}
 \end{figure}
 
 \newpage
 
-\section{Comparación de distribución de coeficientes para un espaciado de $\lambda/4$}
+\subsection{Comparaciones para $\lambda$/4}
 
-\begin{figure}[h]
+En estas comparaciones podemos ver que la distribución de corriente binómica es la que ningún lóbulo secundarios y/o laterales presenta, por el otro lado se encuentra la distribución de corriente uniforme, que a medida que se le aumenta más elementos, su directividad aumenta, pero sus lóbulos secundarios aumentan en número, pero también se debe considerar que al aumentar número de lóbulos secundarios o menores, estos son pequeños. Debemos señalar que se alcanza una gran ganancia para la distribución triangular para 9 segmentos, se llega a $12.1dBi$ 
+
+% COMPARACIÓN PARA d=LAMBDA/4
+\begin{figure}[h!]
 	\centering
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a444}\label{a333}}
+		\includegraphics[scale=0.47]{IMAGENES/c11}\label{c11}}
 	\subfloat[]{
-		\includegraphics[scale=0.35]{IMAGENES/a333}\label{a444}}	
-	\caption{(a) Patrón de radiación horizontal para 300MHz, espaciado de $\lambda / 4$. (b) Patrón de radiación vertical  para 300MHz, espaciado de $\lambda / 4$.  }
+		\includegraphics[scale=0.47]{IMAGENES/c12}\label{c12}}
+	\subfloat[]{
+		\includegraphics[scale=0.47]{IMAGENES/c13}\label{c13}}\\
+	\subfloat[]{
+		\includegraphics[scale=0.47]{IMAGENES/c14}\label{c14}}
+	\subfloat[]{
+		\includegraphics[scale=0.47]{IMAGENES/c15}\label{c15}}
+	\subfloat[]{
+		\includegraphics[scale=0.45]{IMAGENES/c16}\label{c16}}
+	
+	\caption{Patrones de radiación para $d_2=\lambda/4$.
+		(a) Distribución Binómica Vertical.
+		(b) Distribución Binómica Horizontal.
+		(c) Distribución Triangular Vertical.
+		(d) Distribución Triangular Horizontal.
+		(e) Distribución Uniforme Vertical.
+		(f) Distribución Uniforme Horizontal.}
 \end{figure}
 
-Para una distancia de separación de $\lambda/4 = 0.25$ se tiene dos buenos resultados para diferentes usos. Podemos descartar la distribución homogenea porque tiene lóbulos secundarios muy grandes, a pesar de que cuenta con mejor directividad. 
+\newpage
 
-Para la distribución triangular se tiene un patrón de radiación sin lóbulos secundarios, todo el patrón de radiación se va en su lóbulo principal y posterior. Es muy eficiente y es tan solo un poco menos directivo que con la distribución homogenea. Haciendo algunos rreglos de radio $a$, disminuyendo este radio, o aumentando ligeramente $L$ obtendríamos un coeficiente de radiación a $f=300MHz$. Esta distribución es optima, es bidireccional, un ángulo de haz de 45 grados aproximadamente, y una ganancia máxima de $7.88dBi$. Podría usarse para enlaces no tan lejanos.
+\section{Conclusiones}
 
-Para la distribución binómica se tiene un haz de radiación más abierto con una ganancia máxima de $6.41dBi$. No presenta lóbulos menores, tiene un comportamiento bidireccional y se podría usar para cubrir un area mucho más amplio pero cercano.
+\begin{itemize}
+	\item Por encima de todo, en cualquiera de las distribuciones, podemos afirmar que se obtiene mejor directividad, y por sonsiguiente mayor ganancia para $d_1=\lambda/2$, como se muestra en la imagen \eqref{comparacion}.
+	\item Podemos mejorar la directividad y ganancia variando $H$ para ir considerando los valores de ROE y el coeficiente de reflexión en la frecuencia de resonancia por ejemplo.
+	\item Entre los tres tipos de distribución, vemos que la mejor distribución es la uniforme, debido a que en principio se necesita menor potencia que las otras distribuciones, y la directividad va en aumento a medida de que se agregan más elementos. Además de que a menos número de elementos, $3$ o $5$ por ejemplo, es la que mayor ganancia tiene, y mejor directividad presenta.
+\end{itemize}
 
-\chapter{Concluciones}
-Podemos concluir que para una $f=300MHz$ con 7 elementos, podemos ir eliminando lóbulos menores aumentando la corriente de exitación de los elementos centrales (para uso de comportamiento bidireccional). De acuerdo a las districubiones triangular, binómica y homogenea, la que mejor se adecúa para aumentar directividad, es la distribución triangular, ya que a pesar de que puede presentar lóbulos menores, estos son pequeños, incluso desaparecen, como en el caso de un espaciado de $\lambda/4$. Se podría optimizar la directividad y la ganancia, así como el SWR con valores de espaciado entre $\lambda/4$ y $\lambda/2$ usando la distribución triangular.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{IMAGENES/comparacion}
+	\caption{Comparación de las ganancias para cada caso.}
+	\label{comparacion}
+\end{figure}
 
-Pero si queremos cubrir un mayor area, cercana a la vez (bidireccional), y sin pérdida en lóbulos menores, podemos optar por una distribución binómica.
 
-\begin{enumerate}
-	\item 9 elementos, separacion de elementos de $\lambda/2$, $H=\lambda/2$ (disponible)
-	\item 9 elementos, separacion de elementos de $\lambda/4$, $H=\lambda/2$ (disponible) 
-	\item 7 elementos, separacion de elementos de $\lambda/2$, $H=\lambda/2$ (se hizo en clases) 
-	\item 7 elementos, separacion de elementos de $\lambda/4$, $H=\lambda/2$ (Saul) 
-	\item 5 elementos, separacion de elementos de $\lambda/2$, $H=\lambda/2$ (Edison) 
-	\item 5 elementos, separacion de elementos de $\lambda/4$, $H=\lambda/2$ (Roly) 
-	\item 3 elementos, separacion de elementos de $\lambda/2$, $H=\lambda/2$ (Mafer) 
-	\item 3 elementos, separacion de elementos de $\lambda/4$, $H=\lambda/2$ (Milenka) 
-\end{enumerate}
-
-Considerar $\lambda=1.00m$, diametro del alambre $=0.2mm$, frecuencia de $300MHz$. $H$ es la longitud de cada elemento. Subir a Drive
 	
 \end{document}
